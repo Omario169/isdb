@@ -1,0 +1,34 @@
+1) get hosting plan (theyll provide a database), if not then look for a free database provider to get one setup - done
+2) create one table - done
+3) make some fields in that table (customer_id, customer_name, customer_image_url)
+4) populate it with dummy data but real images (of whatever the fuck u want) so u know it works
+
+5) connect that database to ur website using php
+
+6) pull in information from that database (SELECT * FROM users_table WHERE user_id IS 1) something like that
+7) then display the customer_image_url in an <image> tag
+
+
+
+
+
+
+1)
+Host: sql2.freesqldatabase.com
+Database name: sql2310390
+Database user: sql2310390
+Database password: mL3*sE9!
+Port number: 3306
+
+to control dataase:
+http://www.phpmyadmin.co/
+
+
+
+
+2)
+look at powerpoint
+
+
+
+
