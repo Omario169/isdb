@@ -4,6 +4,8 @@
     include_once 'includes/dbh.inc.php';
 ?>
 
+<body>
+
 <?php
     $album_id =  $_GET['album_id'];
 

@@ -16,6 +16,18 @@
 
 
 
+    <body>
+
+    <div class="narrow">
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 
 
 
@@ -59,7 +71,7 @@
                             <div class="single-album">
                                 <img src="img/bg-img/a3.jpg" alt="">
                                 <div class="album-info">
-                                    <a href="#">
+                                <a href="album.php?album_id=2">
                                         <h5>Scale or Die</h5>
                                     </a>
                                     <p>#19 Laura Roeder</p>
@@ -745,8 +757,8 @@
             </div>
         </div>
     </section>
-     
-   
+</div>
+    </body>
     <!-- ##### Contact Area End ##### -->
 
     <?php
@@ -755,6 +767,6 @@
    <?php
     include 'preloads/javascript.php';
 ?>
-</body>
+
 
 </html>

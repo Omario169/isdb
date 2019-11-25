@@ -5,8 +5,8 @@
                 <div class="col-12 col-md-6">
                     <a href="index.html" class ="nav-brand"><img src="img/core-img/logo.png" alt="ISDB logo" style="width:100px;height:100px;"></a>
                     <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> This was a website to showcase my PHP skills <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Omar Faruk</a>
+</p>
                 </div>
 
                 <div class="col-6 col-md-6">
