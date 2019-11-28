@@ -29,6 +29,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
     <!-- ##### Header Area Start ##### -->
 
     <header class="header-area1>
@@ -119,11 +130,11 @@
                                    
                                     <!-- The following php code will display the log in form when the user is logged out. The log out button will subsequently be displayed if the user is logged in. -->
                                     </ul>
-
+                                    <div class="header-login">
                                     <?php
                                         if (!isset($_SESSION['id'])) {
                                             echo '<form action="includes/login.inc.php" method="post">
-                                            <input type="text" name="mailuid" placeholder="E-mail/Username">
+                                            <input type="text" name="mailuid" placeholder="Username">
                                             <input type="password" name="pwd" placeholder="Password">
                                             <button type="submit" name="login-submit">Login</button>
                                             </form>
@@ -135,7 +146,7 @@
                                             </form>';
                                             }
                                             ?>
-                                 
+                                    </div>
                                         
                                    </div>
                             </div>
