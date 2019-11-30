@@ -12,13 +12,13 @@
     <!-- ##### Breadcumb Area End ##### -->
 
     <!-- ##### Login Area Start ##### -->
-    <section class="login-area section-padding-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-8">
-                    <div class="login-content">
-                        <h3>New? Register now!</h3>
-                        <?php
+<section class="login-area section-padding-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <div class="login-content">
+        <h3>New? Register now!</h3>
+          <?php
           // Here we create an error message if the user made an error trying to sign up.
           if (isset($_GET["error"])) {
             if ($_GET["error"] == "emptyfields") {
@@ -41,8 +41,8 @@
             }
           }
           // Here we create a success message if the new user was created.
-          else if (isset($_GET["signup"])) {
-            if ($_GET["signup"] == "success") {
+          else if (isset($_GET["register"])) {
+            if ($_GET["register"] == "success") {
               echo '<p class="signupsuccess">Signup successful!</p>';
             }
           }
