@@ -50,9 +50,9 @@
                                 <img src="img/bg-img/a1.jpg" alt="">
                                 <div class="album-info">
                                     <a href="#">
-                                        <h5>The Joe Rogan Experience</h5>
+                                        <h5>Quelle Chris</h5>
                                     </a>
-                                    <p>#1336 Richard Dawkin</p>
+                                    <p>Guns</p>
                                 </div>
                             </div>
     
@@ -72,9 +72,9 @@
                                 <img src="img/bg-img/a3.jpg" alt="">
                                 <div class="album-info">
                                 <a href="album.php?album_id=2">
-                                        <h5>Scale or Die</h5>
+                                        <h5>Czarface</h5>
                                     </a>
-                                    <p>#19 Laura Roeder</p>
+                                    <p>Czarface meets Ghostface</p>
                                 </div>
                             </div>
     
@@ -94,9 +94,9 @@
                                 <img src="img/bg-img/a5.jpg" alt="">
                                 <div class="album-info">
                                     <a href="#">
-                                        <h5>Bill Burr's Monday Morning Podcast</h5>
+                                        <h5>Jorja Smith</h5>
                                     </a>
-                                    <p>October 21st, 2019</p>
+                                    <p>Lost and Found</p>
                                 </div>
                             </div>
     
@@ -105,9 +105,9 @@
                                 <img src="img/bg-img/a6.jpg" alt="">
                                 <div class="album-info">
                                     <a href="#">
-                                        <h5>Liam Gallagher</h5>
+                                        <h5>Noel Gallagher's High Flying Birds</h5>
                                     </a>
-                                    <p>WHY ME WHY NOT</p>
+                                    <p>Who Built the Moon?</p>
                                 </div>
                             </div>
     
@@ -116,9 +116,9 @@
                                 <img src="img/bg-img/a7.jpg" alt="">
                                 <div class="album-info">
                                     <a href="#">
-                                        <h5>Solange Knowles</h5>
+                                        <h5>Hobo Johnson</h5>
                                     </a>
-                                    <p>When I Get Home</p>
+                                    <p>The Fall of Hobo Johnson</p>
                                 </div>
                             </div>
                         </div>
@@ -638,7 +638,7 @@
                                 <img src="img/bg-img/pa1.jpg" alt="">
                             </div>
                             <div class="content-">
-                                <p>Joe Rogan</p>
+                                <p>Nujabes</p>
                             </div>
                         </div>
 
@@ -678,7 +678,7 @@
                                 <img src="img/bg-img/pa5.jpg" alt="">
                             </div>
                             <div class="content-">
-                                <p>DJ Ajay</p>
+                                <p>Jorja Smith</p>
                             </div>
                         </div>
 
@@ -688,7 +688,7 @@
                                 <img src="img/bg-img/pa6.jpg" alt="">
                             </div>
                             <div class="content-">
-                                <p>Radio Vibez</p>
+                                <p>Noel Gallagher</p>
                             </div>
                         </div>
 
@@ -698,7 +698,7 @@
                                 <img src="img/bg-img/pa7.jpg" alt="">
                             </div>
                             <div class="content-">
-                                <p>Music 4u</p>
+                                <p>Thom Yorke</p>
                             </div>
                         </div>
 
