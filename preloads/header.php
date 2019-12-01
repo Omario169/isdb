@@ -98,10 +98,10 @@
                                 <ul>
                                     <li><a href="index.php">Home</a></li>
                                     <li><a href="albums-store.html">Albums</a></li>
-                                    <li><a href="#">My lists</a>
+                                    <li><a href="profile.php">Profile</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Albums To Listen To</a></li>
-                                            <li><a href="albums-store.html">Podcasts to listen to</a></li>
+                                            <li><a href="index.html">Listen List</a></li>
+                                            <li><a href="albums-store.html">Artist List</a></li>
                                             <li><a href="event.html">Shopping List</a></li>
                                          
                                            
@@ -125,7 +125,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="event.html">Podcasts</a></li>
+                                    <li><a href="uploadimages.php">Upload Images</a></li>
                                     <li><a href="blog.html">News</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                    
