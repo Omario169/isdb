@@ -39,10 +39,46 @@
 <main><h2>Description</h2> <?php echo "<p> $albumdesc  </p>" ?></main>
 <section>Track Listing</section>
 
-<aside class="albumArt"><h1>Album Art</h1> <?php echo '<img src="data:image;base64,'.base64_encode($albumimage).' " >'; ?></aside>
+<aside class="albumArt"><?php echo '<img src="data:image;base64,'.base64_encode($albumimage).' " alt="album Image" style="width: 200px; height: 190px;">'; ?></aside>
 
 
-<aside class="moreInfo">More Info <?php echo "<h2> $albumdate  </h2>" ?></aside>
+<aside class="moreInfo"><h2>More Info</h2>
+<table>
+<tr>
+ <th>Release Date:<th>
+ <th><?php echo "<p> $albumdate  </p>" ?><th>
+
+</tr>
+
+<tr>
+ <th>Artist: <th>
+ <th>Name of Artist Here<th>
+
+</tr>
+
+<tr>
+ <th>Genre(s): <th>
+ <th>Genre of album<th>
+
+</tr>
+
+<tr>
+ <th>Buy Vinyl: <th>
+ <th>Link to buy page<th>
+
+</tr>
+
+<tr>
+ <th>Add to listen list: <th>
+ <th>Button to add<th>
+
+</tr>
+
+</table>
+
+</aside>
+
+
 <div class=albumComments> Comment section
 
 

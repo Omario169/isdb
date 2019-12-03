@@ -59,8 +59,8 @@
                             <!-- Single Album -->
                             <div class="single-album">
                                 <img src="img/bg-img/a2.jpg" alt="">
-                                <div class="album.php?album_id=14">
-                                    <a href="#">
+                                <div class="album-info">
+                                    <a href="album.php?album_id=14">
                                         <h5>Deafheaven</h5>
                                     </a>
                                     <p>Ordinary Corrupt Human Love</p>
