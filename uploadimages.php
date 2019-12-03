@@ -21,7 +21,7 @@
       <input type="text" name="album_name" placeholder="Enter album name"> <br> 
 
 
-      <input type="submit" name="upload" value="insert" id="insert">UPLOAD FILE</button>
+      <input type="submit" name="upload" value="Insert" id="insert">UPLOAD FILE</button>
     </form>
     </body>
     <!-- ##### Contact Area End ##### -->
@@ -53,11 +53,11 @@ if(isset($_POST['upload']))
 
     if($query_run)
     {
-        echo '<script type="text/javascript">alert("Album Profile uploaded)</script>';
+        echo '<script type="text/javascript">alert("Album Profile uploaded")</script>';
     }
     else 
     {
-        echo '<script type="text/javascript">alert("Album Profile NOT uploaded)</script>';
+        echo '<script type="text/javascript">alert("Album Profile NOT uploaded")</script>';
     }
 }
 

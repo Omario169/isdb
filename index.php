@@ -49,7 +49,7 @@
                             <div class="single-album">
                                 <img src="img/bg-img/a1.jpg" alt="">
                                 <div class="album-info">
-                                    <a href="#">
+                                    <a href="album.php?album_id=13">
                                         <h5>Quelle Chris</h5>
                                     </a>
                                     <p>Guns</p>
@@ -59,7 +59,7 @@
                             <!-- Single Album -->
                             <div class="single-album">
                                 <img src="img/bg-img/a2.jpg" alt="">
-                                <div class="album-info">
+                                <div class="album.php?album_id=14">
                                     <a href="#">
                                         <h5>Deafheaven</h5>
                                     </a>
@@ -71,10 +71,10 @@
                             <div class="single-album">
                                 <img src="img/bg-img/a3.jpg" alt="">
                                 <div class="album-info">
-                                <a href="album.php?album_id=2">
-                                        <h5>Czarface</h5>
+                                <a href="album.php?album_id=17">
+                                        <h5>Gang Starr</h5>
                                     </a>
-                                    <p>Czarface meets Ghostface</p>
+                                    <p>One of the Best Yet</p>
                                 </div>
                             </div>
     
@@ -82,7 +82,7 @@
                             <div class="single-album">
                                 <img src="img/bg-img/a4.jpg" alt="">
                                 <div class="album-info">
-                                    <a href="album.php?album_id=1">
+                                    <a href="album.php?album_id=16">
                                         <h5>Led Zeppelin</h5>
                                     </a>
                                     <p>Houses of the Holy</p>
@@ -93,7 +93,7 @@
                             <div class="single-album">
                                 <img src="img/bg-img/a5.jpg" alt="">
                                 <div class="album-info">
-                                    <a href="#">
+                                    <a href="album.php?album_id=15">
                                         <h5>Jorja Smith</h5>
                                     </a>
                                     <p>Lost and Found</p>
@@ -104,7 +104,7 @@
                             <div class="single-album">
                                 <img src="img/bg-img/a6.jpg" alt="">
                                 <div class="album-info">
-                                    <a href="#">
+                                    <a href="album.php?album_id=21">
                                         <h5>Noel Gallagher's High Flying Birds</h5>
                                     </a>
                                     <p>Who Built the Moon?</p>
@@ -115,7 +115,7 @@
                             <div class="single-album">
                                 <img src="img/bg-img/a7.jpg" alt="">
                                 <div class="album-info">
-                                    <a href="#">
+                                    <a href="album.php?album_id=20">
                                         <h5>Hobo Johnson</h5>
                                     </a>
                                     <p>The Fall of Hobo Johnson</p>
