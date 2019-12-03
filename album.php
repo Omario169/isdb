@@ -35,11 +35,11 @@
  <div id="albumcontent"> 
 
 
-<div class=albumtitle> <?php echo "<h2> $albumname  </h2>" ?> and Review</div>
-<main>Description <?php echo "<h2> $albumdesc  </h2>" ?></main>
+<div class=albumtitle> <?php echo "<h1> $albumname  </h1>" ?> and Review</div>
+<main><h2>Description</h2> <?php echo "<p> $albumdesc  </p>" ?></main>
 <section>Track Listing</section>
 
-<aside class="albumArt">Album Art <?php echo '<img src="data:image;base64,'.base64_encode($albumimage).'                  "        >';                  ?></aside>
+<aside class="albumArt"><h1>Album Art</h1> <?php echo '<img src="data:image;base64,'.base64_encode($albumimage).' " >'; ?></aside>
 
 
 <aside class="moreInfo">More Info <?php echo "<h2> $albumdate  </h2>" ?></aside>
