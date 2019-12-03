@@ -44,15 +44,17 @@
 
 <aside class="moreInfo"><h2>More Info</h2>
 <table>
+
+
 <tr>
- <th>Release Date:<th>
- <th><?php echo "<p> $albumdate  </p>" ?><th>
+ <th>Artist: <th>
+ <th>Artist Name<th>
 
 </tr>
 
 <tr>
- <th>Artist: <th>
- <th>Name of Artist Here<th>
+ <th>Release Date:<th>
+ <th><?php echo "<p> $albumdate  </p>" ?><th>
 
 </tr>
 
