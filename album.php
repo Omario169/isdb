@@ -8,7 +8,18 @@
 
 <?php
     $album_id =  $_GET['album_id'];
-    $user_id = $_SESSION['id'];
+    
+    if (!isset($_SESSION['id'])) {
+      
+              }
+              else if (isset($_SESSION['id'])) {
+               $user_id = $_SESSION['id'];
+               $user_fave = "SELECT * FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
+              $fave_result = mysqli_query($conn, $user_fave);
+               }
+    
+  
+                                            
 
 
 //sql query to get album information from 
@@ -26,12 +37,6 @@
     else {
       echo "There are no albums!";
     }
-
-    $user_fave = "SELECT * FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
-
-    $fave_result = mysqli_query($conn, $user_fave);
-    
-
 
 
 ?>
@@ -80,13 +85,15 @@
  <th>Add to fave list: <th>
  <th><?php 
  
- if (mysqli_num_rows($fave_result) > 0) {
-  
- 
-  echo '<input type="button" value="UnAdd"  />';
-  } else {
-  echo '<input type="button" value="Add"  />';
-}
+
+
+if (!isset($_SESSION['id'])) {
+  echo '<p> Sign in! </p>';
+  } else if (mysqli_num_rows($fave_result) > 0) {
+    echo '<input type="button" value="UnAdd"  />';
+            } else {
+            echo '<input type="button" value="Add"  />';
+          }
  
  ?><th>
 
@@ -139,3 +146,22 @@
 </body>
 
 </html>
+
+<!-- if (!isset($_SESSION['id'])) {
+   echo '<p> Please register or sign in!
+         </p>';
+           }
+           else if (isset($_SESSION['id'])) {
+            $user_id = $_SESSION['id'];
+            $user_fave = "SELECT * FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
+           $fave_result = mysqli_query($conn, $user_fave);
+            } -->
+
+
+            <!-- if (mysqli_num_rows($fave_result) > 0) {
+  
+ 
+  echo '<input type="button" value="UnAdd"  />';
+  } else {
+  echo '<input type="button" value="Add"  />';
+} -->
