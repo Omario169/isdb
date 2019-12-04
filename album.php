@@ -8,7 +8,7 @@
 
 <?php
     $album_id =  $_GET['album_id'];
-    
+    $user_id = $_SESSION['id'];
 
 
 //sql query to get album information from 
@@ -30,16 +30,7 @@
     $user_fave = "SELECT * FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
 
     $fave_result = mysqli_query($conn, $user_fave);
-    if (mysqli_num_rows($fave_result) > 0) {
-      while ($fave_row = mysqli_fetch_assoc($fave_result)) 
-      {
-      $user_id = $fave_row['user_favourite_id'];
-      $album_id  = $fave_row['album_favourite_id'];
-      }
-    }
-    else {
-      echo "There are no faves!";
-    }
+    
 
 
 
@@ -87,7 +78,17 @@
 
 <tr>
  <th>Add to fave list: <th>
- <th><?php echo "<p> $album_id   </p>" ?><th>
+ <th><?php 
+ 
+ if (mysqli_num_rows($fave_result) > 0) {
+  
+ 
+  echo '<input type="button" value="UnAdd"  />';
+  } else {
+  echo '<input type="button" value="Add"  />';
+}
+ 
+ ?><th>
 
 </tr>
 
@@ -106,7 +107,18 @@
 
  </div>
 
+<!-- 
+ if (mysqli_num_rows($fave_result) > 0) {
+  while ($fave_row = mysqli_fetch_assoc($fave_result)) 
+  {
+ 
+  echo '<input type="button" value="UnAdd"  />';
+  }
+  
 
+} else {
+  echo '<input type="button" value="Add"  />';
+} -->
 
 
 
