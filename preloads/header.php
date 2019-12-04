@@ -1,7 +1,7 @@
 <?php
     session_start();
     include_once 'includes/dbh.inc.php';
-    
+    $user_id = $_SESSION['id'];
 ?>
 
 
@@ -30,19 +30,7 @@
 </head>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- ##### Header Area Start ##### -->
+<!-- ##### Header Area Start ##### -->
 
     <header class="header-area1>
     
