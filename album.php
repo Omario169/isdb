@@ -90,10 +90,47 @@
 if (!isset($_SESSION['id'])) {
   echo '<p> Sign in! </p>';
   } else if (mysqli_num_rows($fave_result) > 0) {
-    echo '<input type="button" value="UnAdd"  />';
-            } else {
-            echo '<input type="button" value="Add"  />';
+    echo '<form method="post">
+<input type="submit" name="unFave" value="Remove from Favourite"/>
+</form>';
+    } else {
+    echo ' <form method="post">
+    <input type="submit" name="Fave" value="Add To Favourite"/>
+</form>';
           }
+
+          
+ if(isset($_POST['Fave']))
+    {
+      $FaveInsert = "INSERT INTO users_favourite_albums_table (user_favourite_id, album_favourite_id) VALUES ('$user_id', '$album_id')";
+         $result = mysqli_query($conn, $FaveInsert);
+
+         if ($result) {
+          header('Location:'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+          die;
+       } else {
+          echo "Error: " . $sql . "" . mysqli_error($conn);
+       }
+     }
+
+
+     if(isset($_POST['unFave']))
+     {
+       $FaveDelete = "DELETE FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
+       $result = mysqli_query($conn, $FaveDelete);
+
+       if ($result) {
+        header('Location:'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+die;
+     } else {
+        echo "Error: " . $sql . "" . mysqli_error($conn);
+      }
+     }
+    
+     
+
+     
+          
  
  ?><th>
 
@@ -113,19 +150,6 @@ if (!isset($_SESSION['id'])) {
 
 
  </div>
-
-<!-- 
- if (mysqli_num_rows($fave_result) > 0) {
-  while ($fave_row = mysqli_fetch_assoc($fave_result)) 
-  {
- 
-  echo '<input type="button" value="UnAdd"  />';
-  }
-  
-
-} else {
-  echo '<input type="button" value="Add"  />';
-} -->
 
 
 
@@ -147,21 +171,3 @@ if (!isset($_SESSION['id'])) {
 
 </html>
 
-<!-- if (!isset($_SESSION['id'])) {
-   echo '<p> Please register or sign in!
-         </p>';
-           }
-           else if (isset($_SESSION['id'])) {
-            $user_id = $_SESSION['id'];
-            $user_fave = "SELECT * FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
-           $fave_result = mysqli_query($conn, $user_fave);
-            } -->
-
-
-            <!-- if (mysqli_num_rows($fave_result) > 0) {
-  
- 
-  echo '<input type="button" value="UnAdd"  />';
-  } else {
-  echo '<input type="button" value="Add"  />';
-} -->
