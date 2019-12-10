@@ -213,3 +213,24 @@
     })
 
 })(jQuery);
+
+
+
+ 
+//Add/Remove favourite button
+$("#submitFave").click(function() {
+
+var faveData = $("#faveButton :input").serializeArray();
+
+ $.post ( $("#faveButton").attr("action"), faveData, function(info) $("#faveResult").html(info); });
+
+ });
+
+
+ $("#unsubmitFave").click(function() {
+
+      var unfaveData = $("#unfaveButton :input").serializeArray();
+    
+     $.post ( $("#unfaveButton").attr("action"), unfaveData, function(info) $("#faveResult").html(info); });
+    
+    });

@@ -2,23 +2,23 @@
     
     include 'preloads/header.php';
     include_once 'includes/dbh.inc.php';
+    include_once 'includes/userData.php';
 ?>
 
 <body>
 
 <?php
-    $album_id =  $_GET['album_id'];
-    
-    if (!isset($_SESSION['id'])) {
+   
+   $album_id =  $_GET['album_id'];
+
+   if (!isset($_SESSION['id'])) {
       
-              }
-              else if (isset($_SESSION['id'])) {
-               $user_id = $_SESSION['id'];
-               $user_fave = "SELECT * FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
-              $fave_result = mysqli_query($conn, $user_fave);
-               }
-    
-  
+  }
+  else if (isset($_SESSION['id'])) {
+   $user_id = $_SESSION['id'];
+   $user_fave = "SELECT * FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
+  $fave_result = mysqli_query($conn, $user_fave);
+   }
                                             
 
 
@@ -90,42 +90,42 @@
 if (!isset($_SESSION['id'])) {
   echo '<p> Sign in! </p>';
   } else if (mysqli_num_rows($fave_result) > 0) {
-    echo '<form method="post">
-<input type="submit" name="unFave" value="Remove from Favourite"/>
+    echo '<form id= "unfaveButton" method="post">
+<input id= "unsubmitFave" type="submit" name="unFave" value="Remove from Favourite"/>
 </form>';
     } else {
-    echo ' <form method="post">
-    <input type="submit" name="Fave" value="Add To Favourite"/>
+    echo ' <form id="faveButton" method="post">
+    <input id= "submitFave" type="submit" name="Fave" value="Add To Favourite"/>
 </form>';
           }
 
           
- if(isset($_POST['Fave']))
-    {
-      $FaveInsert = "INSERT INTO users_favourite_albums_table (user_favourite_id, album_favourite_id) VALUES ('$user_id', '$album_id')";
-         $result = mysqli_query($conn, $FaveInsert);
-
-         if ($result) {
-          header('Location:'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-          die;
-       } else {
-          echo "Error: " . $sql . "" . mysqli_error($conn);
-       }
-     }
-
-
-     if(isset($_POST['unFave']))
-     {
-       $FaveDelete = "DELETE FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
-       $result = mysqli_query($conn, $FaveDelete);
-
-       if ($result) {
-        header('Location:'.$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-die;
-     } else {
-        echo "Error: " . $sql . "" . mysqli_error($conn);
-      }
-     }
+          if(isset($_POST['Fave']))
+          {
+            $FaveInsert = "INSERT INTO users_favourite_albums_table (user_favourite_id, album_favourite_id) VALUES ('$user_id', '$album_id')";
+               $result = mysqli_query($conn, $FaveInsert);
+      
+               if ($result) {
+                echo 'success';
+                
+                } else {
+                  echo 'fail';
+             }
+           }
+      
+      
+           if(isset($_POST['unFave']))
+           {
+             $FaveDelete = "DELETE FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
+             $result = mysqli_query($conn, $FaveDelete);
+      
+             if ($result) {
+              echo 'success';
+      
+           } else {
+              echo 'fail';
+            }
+           }
     
      
 
