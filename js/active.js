@@ -214,23 +214,35 @@
 
 })(jQuery);
 
-
-
- 
-//Add/Remove favourite button
-$("#submitFave").click(function() {
-
-var faveData = $("#faveButton :input").serializeArray();
-
- $.post ( $("#faveButton").attr("action"), faveData, function(info) $("#faveResult").html(info); });
-
- });
-
-
- $("#unsubmitFave").click(function() {
-
-      var unfaveData = $("#unfaveButton :input").serializeArray();
+$('#faveButton').on('submit', function() {
     
-     $.post ( $("#unfaveButton").attr("action"), unfaveData, function(info) $("#faveResult").html(info); });
-    
+
+    var that = $(this),
+        url = that.attr('action'),
+        type = that.attr('method'),
+        data = {};
+
+    that.find('[name]').each(function() {
+        var that = $(this),
+            name = that.attr('name'),
+            value = that.val();
+
+        data[name] = value;
     });
+
+    $.ajax({
+        url: url,
+        type: type, 
+        data: data,
+        success: function(response) {
+            console.log(response);
+        }
+
+
+
+    });
+
+    return false;
+
+});
+

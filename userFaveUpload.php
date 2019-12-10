@@ -1,8 +1,15 @@
 <?php
 
-include 'preloads/header.php';
+
 include_once 'includes/dbh.inc.php';
-include_once 'includes/userData.php';
+include 'preloads/header.php';
+
+
+
+
+$user_id = $_SESSION['id'];
+
+$album_id =  $_GET['album_id'];
 
 if(isset($_POST['Fave']))
     {
@@ -10,10 +17,10 @@ if(isset($_POST['Fave']))
          $result = mysqli_query($conn, $FaveInsert);
 
          if ($result) {
-          echo '<script> success </success>';
+          echo ' success' ;
           
           } else {
-            echo '<script> success </success>';
+            echo 'fail ';
        }
      }
 
@@ -24,10 +31,10 @@ if(isset($_POST['Fave']))
        $result = mysqli_query($conn, $FaveDelete);
 
        if ($result) {
-        echo '<script> success </success>';
+        echo ' success ';
 
      } else {
-        echo '<script> fail </success>';
+        echo 'fail ';
       }
      }
     
