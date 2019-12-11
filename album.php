@@ -97,11 +97,11 @@ if (!isset($_SESSION['id'])) {
   echo '<p> Sign in! </p>';
   } else if (mysqli_num_rows($fave_result) > 0) {
     echo '<form action="userFaveUpload.php?album_id='.$album_id.'" class="faveButton" method="post">
-        <input id= "submitFave" type="submit" name="unFave" value="Fave"/>
+        <input id= "submitFave" onclick="faveFunction()" type="submit" name="unFave" value="Fave"/>
         </form>';
     } else {
     echo ' <form action="userFaveUpload.php?album_id='.$album_id.'" class="faveButton" method="post">
-    <input id= "submitFave" type="submit" name="Fave" value="Unfave"/>
+    <input id= "submitFave" onclick="faveFunction()" type="submit" name="Fave" value="Unfave"/>
 </form>';
           }
 

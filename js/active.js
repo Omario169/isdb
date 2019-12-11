@@ -214,35 +214,86 @@
 
 })(jQuery);
 
-$('#faveButton').on('submit', function() {
-    
-
-    var that = $(this),
-        url = that.attr('action'),
-        type = that.attr('method'),
-        data = {};
-
-    that.find('[name]').each(function() {
-        var that = $(this),
-            name = that.attr('name'),
-            value = that.val();
-
-        data[name] = value;
-    });
-
-    $.ajax({
-        url: url,
-        type: type, 
-        data: data,
-        success: function(response) {
-            console.log(response);
-        }
 
 
 
-    });
+function faveFunction() {
 
+    var faveNumber = document.getElementById("submitFave").value;
+
+    if (faveNumber === '') {
+        alert ("please enter a fave"); 
+    } else { 
+        $.ajax({
+            type: "POST",
+            url: "userFaveUpload.php",
+            data: faveNumber,
+            cache: false,
+            success: function(html) {
+                $('#msg').html(html);
+                        }
+        });
+
+
+
+    }
     return false;
 
-});
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $('#faveButton').on('submit', function() {
+    
+
+//     var that = $(this),
+//         url = that.attr('action'),
+//         type = that.attr('method'),
+//         data = {};
+
+//     that.find('[name]').each(function() {
+//         var that = $(this),
+//             name = that.attr('name'),
+//             value = that.val();
+
+//         data[name] = value;
+//     });
+
+//     $.ajax({
+//         url: url,
+//         type: 'POST', 
+//         data: data,
+//         success: function(response) {
+//             console.log(response);
+//         }
+
+
+
+//     });
+
+    
+
+// });
+
+// return false;
