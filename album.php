@@ -5,7 +5,8 @@
     include 'preloads/header.php';
     include_once 'includes/dbh.inc.php';
     
-   
+    include 'preloads/javascript.php';
+
 
    
     
@@ -89,20 +90,17 @@
 
 <tr>
  <th>Add to fave list: <th>
- <th><?php 
+ <th>
+ <?php 
  
 
-//var_dump($album_id); die;
+
 if (!isset($_SESSION['id'])) {
   echo '<p> Sign in! </p>';
   } else if (mysqli_num_rows($fave_result) > 0) {
-    echo '<form action="userFaveUpload.php?album_id='.$album_id.'" class="faveButton" method="post">
-        <input id= "submitFave" onclick="faveFunction()" type="submit" name="unFave" value="Fave"/>
-        </form>';
+    echo '<input id="submitFaveButton" userId='.$user_id.' albumId='.$album_id.' onclick="faveFunction()" type="button" value="Unfave"/>';
     } else {
-    echo ' <form action="userFaveUpload.php?album_id='.$album_id.'" class="faveButton" method="post">
-    <input id= "submitFave" onclick="faveFunction()" type="submit" name="Fave" value="Unfave"/>
-</form>';
+      echo '<input id= "submitFaveButton" userId='.$user_id.' albumId='.$album_id.' onclick="faveFunction()" type="button" value="Fave"/>';
           }
 
           
@@ -142,9 +140,6 @@ if (!isset($_SESSION['id'])) {
 
     <?php
     include 'preloads/footer.php';
-    ?>
-   <?php
-    include 'preloads/javascript.php';
     ?>
 
     

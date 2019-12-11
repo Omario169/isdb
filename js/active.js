@@ -10,6 +10,8 @@
         });
     });
 
+
+
     // :: 2.0 Nav Active Code
     if ($.fn.classyNav) {
         $('#oneMusicNav').classyNav();
@@ -219,24 +221,25 @@
 
 function faveFunction() {
 
-    var faveNumber = document.getElementById("submitFave").value;
+    var submitFaveButton = document.getElementById("submitFaveButton");
+    var userId = submitFaveButton.getAttribute("userId");
+    var albumId = submitFaveButton.getAttribute("albumId");
+    var faveUnfavValue = submitFaveButton.getAttribute("value");
 
-    if (faveNumber === '') {
-        alert ("please enter a fave"); 
-    } else { 
-        $.ajax({
-            type: "POST",
-            url: "userFaveUpload.php",
-            data: faveNumber,
-            cache: false,
-            success: function(html) {
-                $('#msg').html(html);
-                        }
-        });
+    var urlToRequest = "userFaveUpload.php?album_id="+albumId+"&fave_unfav_value="+faveUnfavValue
 
-
-
-    }
+    $.ajax({
+        type: "POST",
+        url: urlToRequest,
+        success: function(data) {
+            if(faveUnfavValue == "Fave") {
+                submitFaveButton.setAttribute("value", "Unfave");
+              }
+              else if(faveUnfavValue == "Unfave") {
+                submitFaveButton.setAttribute("value", "Fave");
+            }
+        }
+    });
     return false;
 
 

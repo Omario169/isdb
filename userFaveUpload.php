@@ -4,43 +4,22 @@ include_once 'includes/dbh.inc.php';
 session_start();
 // include 'preloads/header.php';
 
-
-
-
 $user_id = $_SESSION['id'];
 
- $album_id =  $_GET['album_id'];
-
-if(isset($_POST['Fave']))
-    {
-      $FaveInsert = "INSERT INTO users_favourite_albums_table (user_favourite_id, album_favourite_id) VALUES ('$user_id', '$album_id')";
-         $result = mysqli_query($conn, $FaveInsert);
-
-         if ($result) {
-          header("Location: album.php?album_id=".$album_id);
-          
-          } else {
-            echo 'fail ';
-       }
-     }
+$album_id =  $_GET['album_id'];
+$faveUnfavValue =  $_GET['fave_unfav_value'];
 
 
-     if(isset($_POST['unFave']))
-     {
-       $FaveDelete = "DELETE FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
-       $result = mysqli_query($conn, $FaveDelete);
+if($faveUnfavValue == "Fave") {
 
-       if ($result) {
-        header("Location: album.php?album_id=".$album_id);
+  $FaveInsert = "INSERT INTO users_favourite_albums_table (user_favourite_id, album_favourite_id) VALUES ('$user_id', '$album_id')";
+  echo $FaveInsert;
 
-     } else {
-        echo 'fail ';
-      }
-     }
-
-
-     
-
-    
+  $result = mysqli_query($conn, $FaveInsert);
+}
+else if($faveUnfavValue == "Unfave") {
+  $FaveDelete = "DELETE FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
+  $result = mysqli_query($conn, $FaveDelete);
+}
 
 ?>
