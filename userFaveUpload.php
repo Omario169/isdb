@@ -17,7 +17,7 @@ if(isset($_POST['Fave']))
          $result = mysqli_query($conn, $FaveInsert);
 
          if ($result) {
-          exit;
+          header("Location: album.php?album_id=".$album_id);
           
           } else {
             echo 'fail ';
@@ -31,7 +31,7 @@ if(isset($_POST['Fave']))
        $result = mysqli_query($conn, $FaveDelete);
 
        if ($result) {
-        exit;
+        header("Location: album.php?album_id=".$album_id);
 
      } else {
         echo 'fail ';
