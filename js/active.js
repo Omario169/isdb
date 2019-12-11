@@ -218,7 +218,7 @@
 
 
 
-
+// call the fave function and define the required attributes. 
 function faveFunction() {
 
     var submitFaveButton = document.getElementById("submitFaveButton");
@@ -226,8 +226,10 @@ function faveFunction() {
     var albumId = submitFaveButton.getAttribute("albumId");
     var faveUnfavValue = submitFaveButton.getAttribute("value");
 
+// pass the following attributes to be taken by the url and passed onto the php file that will process the album and values passed
     var urlToRequest = "userFaveUpload.php?album_id="+albumId+"&fave_unfav_value="+faveUnfavValue
 
+    //The ajax request changes the button from fave to unfave depending on the onclick event 
     $.ajax({
         type: "POST",
         url: urlToRequest,
