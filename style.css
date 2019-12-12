@@ -1863,6 +1863,21 @@ header .header-area1 {
       font-family: arial;
       font-weight: 400;
       cursor: pointer;
+      margin-bottom: 50px;
+    }
+
+    .comment-box {
+      width: 100%;
+      padding: 20px;
+      margin-bottom: 4px;
+      background-color: #fff;
+      border-radius: 4px;
+
+    }
+
+    .comment-box p {
+      font-family: arial;
+
     }
 
 /* ====== The End ====== */

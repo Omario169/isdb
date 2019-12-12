@@ -130,6 +130,8 @@ echo "<form method='POST' action='".setComments($conn)."'>
     <textarea name='message'> </textarea> <br>
     <button id='commentButton' type='submit' name='commentSubmit'>Comment</button>
 </form>";
+
+getComments($conn);
 ?>
 
 </div>

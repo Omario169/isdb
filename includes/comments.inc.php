@@ -16,3 +16,19 @@ function setComments($conn) {
     
 
 }
+
+function getComments($conn) {
+    $sql = "SELECT * FROM comments";
+    $result = $conn->query($sql);
+    while ($row = $result-> fetch_assoc()) {
+
+        echo "<div class='comment-box'><p>";
+            echo $row['userId']."<br>";
+            echo $row['date']."<br>";
+            echo nl2br($row['message']);
+        echo "</p></div>";
+    }
+    $row = $result-> fetch_assoc();
+    
+}
+
