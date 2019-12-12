@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS users_favourite_albums_table (
+user_favourite_id INT NOT NULL,
+album_favourite_id INT NOT NULL,
+PRIMARY KEY (user_favourite_id, album_favourite_id),
+FOREIGN KEY (user_favourite_id) REFERENCES users_table(idUsers) ON DELETE CASCADE,
+FOREIGN KEY (album_favourite_id) REFERENCES albums_table(album_id) ON DELETE CASCADE);
