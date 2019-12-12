@@ -4,7 +4,7 @@
     
     include 'preloads/header.php';
     include_once 'includes/dbh.inc.php';
-    
+    include 'includes/comments.inc.php';
     include 'preloads/javascript.php';
 
 date_default_timezone_set("Europe/London");
@@ -124,11 +124,11 @@ if (!isset($_SESSION['id'])) {
 <div class=albumComments> Comment section
 
 <?php
-echo "<form> 
+echo "<form method='POST' action='".setComments($conn)."'> 
     <input type='hidden' name='userId' value='Anonymous'>
     <input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
     <textarea name='message'> </textarea> <br>
-    <button id='commentButton' type='submitComment' name='submitComment'>Comment</button>
+    <button id='commentButton' type='submit' name='commentSubmit'>Comment</button>
 </form>";
 ?>
 
