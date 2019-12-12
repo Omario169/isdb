@@ -1351,6 +1351,8 @@ header .header-area1 {
 
 /* :: 14.0 Footer Area CSS */
 .footer-area {
+
+  margin-top: 2%;
   position: relative;
   z-index: 1;
   background-color: #1abc9c;
