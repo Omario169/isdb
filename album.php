@@ -128,7 +128,7 @@ echo "<form>
     <input type='hidden' name='userId' value='Anonymous'>
     <input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
     <textarea name='message'> </textarea> <br>
-    <button type='submitComment' name='submitComment'>Comment</button>
+    <button id='commentButton' type='submitComment' name='submitComment'>Comment</button>
 </form>";
 ?>
 
