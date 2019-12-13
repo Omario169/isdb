@@ -102,15 +102,7 @@ if (!isset($_SESSION['id'])) {
     } else {
       echo '<input id= "submitFaveButton" userId='.$user_id.' albumId='.$album_id.' onclick="faveFunction()" type="button" value="Fave"/>';
           }
-
-          
-
-          
-
-     
-
-     
-          
+      
  
  ?><th>
 
@@ -131,13 +123,27 @@ echo "<form method='POST' action='".setComments($conn)."'>
     <button id='commentButton' type='submit' name='commentSubmit'>Comment</button>
 </form>";
 
-getComments($conn);
+
+
 ?>
+    <h2><b>25 comments</b></h2>
+    <div class="userComments"> 
+      <div class="comment">
+        <div class="user">Omar<span class="time">2019</span></div>
+        <div class="userComment">comment user</div>
+        <div class="replies">
+          <div class="comment">
+            <div class="user">Omar<span class="time">2019</span></div>
+            <div class="userComment">comment user</div>
+          </div>    
+          
 
-</div>
+        </div>
+      </div>
+    </div>
 
 
-
+    </div>
  </div>
 
 

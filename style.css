@@ -1877,7 +1877,33 @@ header .header-area1 {
 
     .comment-box p {
       font-family: arial;
+      font-size: 14px;
+      line-height: 16px;
+      color: #282828;
+      font-weight: 100;
 
+
+    }
+
+    .user {
+      font-weight: bold;
+      color: black;
+    }
+
+    .time {
+      color: gray;
+    }
+
+    .userComment {
+      color: #000;
+    }
+
+    .replies {
+      margin-left: 20px;
+    }
+
+    .replies .comment {
+      margin-top: 20px;
     }
 
 /* ====== The End ====== */
