@@ -243,62 +243,33 @@ function faveFunction() {
         }
     });
     return false;
-
-
 }
 
+//on click a function will be performed, if the comment character is more than 5
+//information sent to album.php, one comment will be added. 
 
+//Double check if SQL table/code is okay 
 
+$(document).ready(function() {
+    $("#addComment").on('click', function() {
+        var comment = $("#mainComment").val();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// $('#faveButton').on('submit', function() {
+        if (comment.length > 5) {
+            $.ajax({
+                url: 'album.php',
+                method: 'POST',
+                dataType: 'text',
+                data: {
+                    addComment: 1,
+                    comment: comment
+                }, success: function (response) {
+                    console.log(response);
+                }
+            });
+        } else 
+            alert ('Please Check Your inputs');
+    })
     
-
-//     var that = $(this),
-//         url = that.attr('action'),
-//         type = that.attr('method'),
-//         data = {};
-
-//     that.find('[name]').each(function() {
-//         var that = $(this),
-//             name = that.attr('name'),
-//             value = that.val();
-
-//         data[name] = value;
-//     });
-
-//     $.ajax({
-//         url: url,
-//         type: 'POST', 
-//         data: data,
-//         success: function(response) {
-//             console.log(response);
-//         }
+});
 
 
-
-//     });
-
-    
-
-// });
-
-// return false;
