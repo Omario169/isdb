@@ -1,40 +1,31 @@
 <?php
 
-include 'preloads/header.php';
-include_once 'includes/dbh.inc.php';
-include 'includes/comments.inc.php';
-include 'preloads/javascript.php';
+
+    
+    include 'preloads/header.php';
+    include_once 'includes/dbh.inc.php';
+    include 'includes/comments.inc.php';
+    include 'preloads/javascript.php';
 
 date_default_timezone_set("Europe/London");
-
-$album_id =  $_GET['album_id'];
-
-if (!isset($_SESSION['id'])) {
    
-}
-else if (isset($_SESSION['id'])) {
-$user_id = $_SESSION['id'];
-$user_fave = "SELECT * FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
-$fave_result = mysqli_query($conn, $user_fave);
-}
     
+?>
 
+<body>
 
-//php to add comments
-if (isset($_POST['addComment'])) {
-  $comment = $conn->real_escape_string($_POST['comment']);
+<?php
+   
+  $album_id =  $_GET['album_id'];
 
-  $conn->query("INSERT INTO user_comment_table (user_id, message, album_id, created_on) 
-  VALUES ('$user_id', '$comment', '$album_id', 'NOW())");
-  exit('success');
-}
-    
-
-
-
-
-
-  
+   if (!isset($_SESSION['id'])) {
+      
+  }
+  else if (isset($_SESSION['id'])) {
+   $user_id = $_SESSION['id'];
+   $user_fave = "SELECT * FROM `users_favourite_albums_table` WHERE `user_favourite_id` = $user_id AND `album_favourite_id` = $album_id";
+  $fave_result = mysqli_query($conn, $user_fave);
+   }
                                             
 
 
@@ -57,7 +48,6 @@ if (isset($_POST['addComment'])) {
 
 ?>
 
-<body>
 
 
  <div id="albumcontent"> 
@@ -112,7 +102,15 @@ if (!isset($_SESSION['id'])) {
     } else {
       echo '<input id= "submitFaveButton" userId='.$user_id.' albumId='.$album_id.' onclick="faveFunction()" type="button" value="Fave"/>';
           }
-      
+
+          
+
+          
+
+     
+
+     
+          
  
  ?><th>
 
@@ -125,33 +123,21 @@ if (!isset($_SESSION['id'])) {
 
 <div class=albumComments> Comment section
 
+<?php
+echo "<form method='POST' action='".setComments($conn)."'> 
+    <input type='hidden' name='userId' value='Anonymous'>
+    <input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
+    <textarea name='message'> </textarea> <br>
+    <button id='commentButton' type='submit' name='commentSubmit'>Comment</button>
+</form>";
 
- <div id="enterMessageArea">
-    <textarea name='message' id="mainComment" placeholder="Add public comment"> </textarea> <br>
-    <button id='addComment' type='submit' name='commentSubmit'>Comment</button>
-  </div>
+getComments($conn);
+?>
 
-
-
-
-    <h2><b>25 comments</b></h2>
-    <div class="userComments"> 
-      <div class="comment">
-        <div class="user">Omar<span class="time">2019</span></div>
-        <div class="userComment">comment user</div>
-        <div class="replies">
-          <div class="comment">
-            <div class="user">Omar<span class="time">2019</span></div>
-            <div class="userComment">comment user</div>
-          </div>    
-          
-
-        </div>
-      </div>
-    </div>
+</div>
 
 
-    </div>
+
  </div>
 
 
