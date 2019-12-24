@@ -62,26 +62,20 @@ date_default_timezone_set("Europe/London");
 <textarea class="form-control" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
   <button style= "float:right" class="btn-primary btn">Add Comment</button>
 
+
+<h2>335 Comments </h2>
   <div class="userComments">
     <div class="comment">
       <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
-      <div class="userComment">This is the first Comment</div>
-      <div class="replies">
-      <div class="comment">
-        <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
         <div class="userComment">This is the first Comment</div>
-    </div>
-    <div class="comment">
-        <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
-        <div class="userComment">This is the first Comment</div>
-    </div>
-    <div class="comment">
-        <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
-        <div class="userComment">This is the first Comment</div>
-    </div>
-      </div>
-    </div>
-  </div>
+          <div class="replies">
+          <div class="comment">
+              <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
+              <div class="userComment">This is the first Comment</div>
+            </div>
+          </div>
+         </div>
+     </div>
 
 
 
