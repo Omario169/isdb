@@ -59,8 +59,8 @@ date_default_timezone_set("Europe/London");
 
 <section>Comment Section 
 
-<textarea class="form-control" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
-  <button style= "float:right" class="btn-primary btn">Add Comment</button>
+<textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
+  <button style= "float:right" class="btn-primary btn" id="addComment">Add Comment</button>
 
 
 <h2>335 Comments </h2>
