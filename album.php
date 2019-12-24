@@ -55,7 +55,47 @@ date_default_timezone_set("Europe/London");
 
 <div class=albumtitle> <?php echo "<h1> $albumname  </h1>" ?> and Review</div>
 <main><h2>Description</h2> <?php echo "<p> $albumdesc  </p>" ?></main>
-<section>Track Listing</section>
+
+
+<section>Comment Section 
+
+<textarea class="form-control" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
+  <button style= "float:right" class="btn-primary btn">Add Comment</button>
+
+  <div class="userComments">
+    <div class="comment">
+      <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
+      <div class="userComment">This is the first Comment</div>
+      <div class="replies">
+      <div class="comment">
+        <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
+        <div class="userComment">This is the first Comment</div>
+    </div>
+    <div class="comment">
+        <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
+        <div class="userComment">This is the first Comment</div>
+    </div>
+    <div class="comment">
+        <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
+        <div class="userComment">This is the first Comment</div>
+    </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
 
 <aside class="albumArt"><?php echo '<img src="data:image;base64,'.base64_encode($albumimage).' " alt="album Image" style="width: 200px; height: 190px;">'; ?></aside>
 
@@ -122,17 +162,11 @@ if (!isset($_SESSION['id'])) {
 
 
 <div class=albumComments> Comment section
+          <div class="row">
+            
+          </div>
 
-<?php
-echo "<form method='POST' action='".setComments($conn)."'> 
-    <input type='hidden' name='userId' value='Anonymous'>
-    <input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
-    <textarea name='message'> </textarea> <br>
-    <button id='commentButton' type='submit' name='commentSubmit'>Comment</button>
-</form>";
 
-getComments($conn);
-?>
 
 </div>
 
