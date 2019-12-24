@@ -173,14 +173,58 @@ if (!isset($_SESSION['id'])) {
 
      
    
-    <!-- ##### Contact Area End ##### -->
+<!-- ##### Contact Area End ##### -->
 
-    <?php
+    
+    
+    
+<?php
     include 'preloads/footer.php';
-    ?>
+?>
 
-    
-    
+<script type="text/javascript">
+    var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
+
+    $(document).ready(function () {
+        $("#addComment, #addReply").on('click', function () {
+            var comment;
+
+            if (!isReply)
+                comment = $("#mainComment").val();
+            else
+                comment = $("#replyComment").val();
+
+            if (comment.length > 5) {
+                $.ajax({
+                    url: 'album.php',
+                    method: 'POST',
+                    dataType: 'text',
+                    data: {
+                        addComment: 1,
+                        comment: comment,
+                        isReply: isReply,
+                        commentID: commentID
+                    }, success: function (response) {
+                        max++;
+                        $("#numComments").text(max + " Comments");
+
+                        if (!isReply) {
+                            $(".userComments").prepend(response);
+                            $("#mainComment").val("");
+                        } else {
+                            commentID = 0;
+                            $("#replyComment").val("");
+                            $(".replyRow").hide();
+                            $('.replyRow').parent().next().append(response);
+                        }
+                    }
+                });
+            } else
+                alert('Please Check Your Inputs');
+        });
+        
+</script>
+
 </body>
 
 </html>
