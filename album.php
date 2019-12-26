@@ -47,7 +47,7 @@ date_default_timezone_set("Europe/London");
 if (isset($_POST['addComment'])) {
     $comment = $conn->real_escape_string($_POST['comment']);
 
-    $conn->query("INSERT INTO comments (userID, comment, createdOn) VALUES ('$user_id', '$comment', NOW())");
+    $conn->query("INSERT INTO user_comment_table (user_id, message, created_on) VALUES ('$user_id', '$comment', NOW())");
     exit('success');
 
 }
