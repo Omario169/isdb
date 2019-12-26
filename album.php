@@ -54,6 +54,10 @@ if (isset($_POST['addComment'])) {
 
 
 
+
+$sqlNumComments = $conn->query("SELECT comment_id FROM user_comment_table");
+$numComments = $sqlNumComments->num_rows;
+
 ?>
 
 
@@ -69,7 +73,7 @@ if (isset($_POST['addComment'])) {
 
 <textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
   <button style= "float:right" class="btn-primary btn" id="addComment">Add Comment</button>
-
+<h2><?php echo $numComments?> Comments</h2>
   <div class="userComments">
     <div class="comment">
       <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
