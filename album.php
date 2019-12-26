@@ -1,12 +1,8 @@
 <?php
-
-
-    
-    include 'preloads/header.php';
-    include_once 'includes/dbh.inc.php';
-    include 'includes/comments.inc.php';
-    include 'preloads/javascript.php';
-
+include 'preloads/header.php';
+include_once 'includes/dbh.inc.php';
+include 'includes/comments.inc.php';
+include 'preloads/javascript.php';
 date_default_timezone_set("Europe/London");
    
     
@@ -59,8 +55,8 @@ date_default_timezone_set("Europe/London");
 
 <section>Comment Section 
 
-<textarea class="form-control" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
-  <button style= "float:right" class="btn-primary btn">Add Comment</button>
+<textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
+  <button style= "float:right" class="btn-primary btn" id="addComment">Add Comment</button>
 
   <div class="userComments">
     <div class="comment">
@@ -82,16 +78,6 @@ date_default_timezone_set("Europe/London");
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -185,9 +171,66 @@ if (!isset($_SESSION['id'])) {
     include 'preloads/footer.php';
     ?>
 
-    
+  
+<script type="text/javascript">
+    var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
+
+    $(document).ready(function () {
+        $("#addComment").on('click', function () {
+            var comment = $("#mainComment").val();
+
+            if (comment.length > 5) {
+                $.ajax({
+                    url: 'album.php',
+                    method: 'POST',
+                    dataType: 'text',
+                    data: {
+                        addComment: 1,
+                        comment: comment
+                    }, success: function (response) {
+                        console.log(response);
+                        }
+                    }
+                });
+            } else
+                alert('Please Check Your Inputs');
+        });
+
+      });
+
+        
+
+      
+
+    // function reply(caller) {
+    //     commentID = $(caller).attr('data-commentID');
+    //     $(".replyRow").insertAfter($(caller));
+    //     $('.replyRow').show();
+    // }
+
+    // function getAllComments(start, max) {
+    //     if (start > max) {
+    //         return;
+    //     }
+
+    //     $.ajax({
+    //         url: 'index.php',
+    //         method: 'POST',
+    //         dataType: 'text',
+    //         data: {
+    //             getAllComments: 1,
+    //             start: start
+    //         }, success: function (response) {
+    //             $(".userComments").append(response);
+    //             getAllComments((start+20), max);
+    //         }
+    //     });
+    // }
+</script>
     
 </body>
 
 </html>
+
+
 
