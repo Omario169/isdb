@@ -42,7 +42,42 @@ date_default_timezone_set("Europe/London");
     }
 
 
-//sql to add comments
+//sql to get comments into website
+
+function createCommentRow($data){
+      return '
+      <div class="comment"> 
+      <div class="user">'.$data['uidUsers'].'<span class="time"> '.$data['created_on'].'</span></div> 
+      <div class="userComment">'.$data['message'].'</div> 
+      <div class="replies"> 
+      <div class="comment"> 
+        <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
+        <div class="userComment">This is the first Comment</div>
+    </div> 
+   
+   
+      </div> 
+    </div> 
+      ';
+}
+
+if (isset($_POST['getAllComments'])) {
+    $start = $conn->real_escape_string($_POST['start']);
+    
+    $response = "";
+    $sqlGetComment = $conn->query("SELECT uidUsers, message, DATE_FORMAT(user_comment_table.created_on, '%Y-%m-%d') AS created_on FROM user_comment_table 
+    INNER JOIN users ON user_comment_table.user_id = users.idUsers ORDER BY user_comment_table.comment_id DESC LIMIT $start, 20
+    ");
+
+    while($data= $sqlGetComment->fetch_assoc())
+    $response = createCommentRow($data);
+
+    exit("response");
+  }
+
+
+
+    //sql to add comments
 
 if (isset($_POST['addComment'])) {
     $comment = $conn->real_escape_string($_POST['comment']);
@@ -74,26 +109,20 @@ $numComments = $sqlNumComments->num_rows;
 <textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
   <button style= "float:right" class="btn-primary btn" id="addComment">Add Comment</button>
 <h2><?php echo $numComments?> Comments</h2>
-  <div class="userComments">
-    <div class="comment">
-      <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
-      <div class="userComment">This is the first Comment</div>
-      <div class="replies">
-      <div class="comment">
+  <div class="userComments"> 
+    <div class="comment"> 
+      <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div> 
+      <div class="userComment">This is the first Comment</div> 
+      <div class="replies"> 
+      <div class="comment"> 
         <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
         <div class="userComment">This is the first Comment</div>
-    </div>
-    <div class="comment">
-        <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
-        <div class="userComment">This is the first Comment</div>
-    </div>
-    <div class="comment">
-        <div class="user">Omar Faruk<span class="time"> 24-12-1019</span></div>
-        <div class="userComment">This is the first Comment</div>
-    </div>
-      </div>
-    </div>
-  </div>
+    </div> 
+   
+   
+      </div> 
+    </div> 
+  </div> 
 
 
 
@@ -212,7 +241,26 @@ if (!isset($_SESSION['id'])) {
         });
     });
 
-        
+//The following function will get the comments dynamically from the database    
+
+function getAllComments(start, max) {
+     if (start > max) {
+         return;
+     }
+
+     $.ajax({
+         url: 'album.php',
+         method: 'POST',
+         dataType: 'text',
+         data: {
+             getAllComments: 1,
+             start: start
+         }, success: function (response) {
+             $(".userComments").append(response);
+             getAllComments((start+20), max);
+         }
+     });
+ }
 
       
 
@@ -222,24 +270,8 @@ if (!isset($_SESSION['id'])) {
     //     $('.replyRow').show();
     // }
 
-    // function getAllComments(start, max) {
-    //     if (start > max) {
-    //         return;
-    //     }
-
-    //     $.ajax({
-    //         url: 'index.php',
-    //         method: 'POST',
-    //         dataType: 'text',
-    //         data: {
-    //             getAllComments: 1,
-    //             start: start
-    //         }, success: function (response) {
-    //             $(".userComments").append(response);
-    //             getAllComments((start+20), max);
-    //         }
-    //     });
-    // }
+   
+    getAllComments(0, <?php echo $numComments ?>);
 </script>
     
 </body>
