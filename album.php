@@ -42,6 +42,18 @@ date_default_timezone_set("Europe/London");
     }
 
 
+//sql to add comments
+
+if (isset($_POST['addComment'])) {
+    $comment = $conn->real_escape_string($_POST['comment']);
+
+    $conn->query("INSERT INTO comments (userID, comment, createdOn) VALUES ('$user_id', '$comment', NOW())");
+    exit('success');
+
+}
+
+
+
 ?>
 
 
@@ -173,7 +185,6 @@ if (!isset($_SESSION['id'])) {
 
   
 <script type="text/javascript">
-    var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
 
     $(document).ready(function () {
         $("#addComment").on('click', function () {
@@ -190,13 +201,10 @@ if (!isset($_SESSION['id'])) {
                     }, success: function (response) {
                         console.log(response);
                         }
-                    }
-                });
-            } else
-                alert('Please Check Your Inputs');
+                    });
+            } else alert('Please Check Your Inputs');
         });
-
-      });
+    });
 
         
 
