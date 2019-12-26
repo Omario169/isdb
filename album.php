@@ -186,11 +186,13 @@ if (!isset($_SESSION['id'])) {
   
 <script type="text/javascript">
 
+//the following uses Ajax and Jquery to upload the users comments to the database
+
     $(document).ready(function () {
         $("#addComment").on('click', function () {
             var comment = $("#mainComment").val();
 
-            if (comment.length > 5) {
+            if (comment.length > 4) {
                 $.ajax({
                     url: 'album.php',
                     method: 'POST',
