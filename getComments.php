@@ -10,7 +10,7 @@ if (isset($_POST['getAllComments'])) {
     ");
 
     while($data= $sqlGetComment->fetch_assoc())
-    $response = createCommentRow($data);
+    $response .= createCommentRow($data);
 
     exit($response);
   }

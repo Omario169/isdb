@@ -79,21 +79,7 @@ $numComments = $sqlNumComments->num_rows;
 
 <section>Comment Section 
 
-<textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
-  <button style= "float:right" class="btn-primary btn" id="addComment">Add Comment</button>
-<h2><?php echo $numComments?> Comments</h2>
-  <div class="userComments"> 
-    <div class="comment"> 
-      
-      <div class="replies"> 
-      <div class="comment"> 
-        
-    </div> 
-   
-   
-      </div> 
-    </div> 
-  </div> 
+
 
 
 
@@ -164,10 +150,21 @@ if (!isset($_SESSION['id'])) {
 
 
 <div class=albumComments> Comment section
-          <div class="row">
-            
-          </div>
-
+<textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
+  <button style= "float:right" class="btn-primary btn" id="addComment">Add Comment</button>
+<h2><?php echo $numComments?> Comments</h2>
+  <div class="userComments"> 
+    <div class="comment"> 
+      
+      <div class="replies"> 
+      <div class="comment"> 
+        
+    </div> 
+   
+   
+      </div> 
+    </div> 
+  </div> 
 
 
 </div>
