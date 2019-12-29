@@ -56,7 +56,11 @@ if (isset($_POST['addComment'])) {
     $comment = $conn->real_escape_string($_POST['comment']);
 
     $conn->query("INSERT INTO user_comment_table (user_id, message, created_on) VALUES ('$user_id', '$comment', NOW())");
-    exit('success');
+    $sqlGetComment = $conn->query("SELECT uidUsers, message, DATE_FORMAT(user_comment_table.created_on, '%Y-%m-%d') AS created_on FROM user_comment_table 
+    INNER JOIN users ON user_comment_table.user_id = users.idUsers ORDER BY user_comment_table.comment_id DESC LIMIT $start, 20
+    ");
+    $data = $sqlGetComment->fetch_assoc();
+    exit(createCommentRow($data));
 
 }
 
@@ -150,8 +154,22 @@ if (!isset($_SESSION['id'])) {
 
 
 <div class=albumComments> Comment section
-<textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
-  <button style= "float:right" class="btn-primary btn" id="addComment">Add Comment</button>
+
+<?php if (!isset($_SESSION['id'])) {
+  echo '<p> Sign in to comment ! </p>';
+  } else  {
+    echo '<textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
+    <button style= "float:right" class="btn-primary btn" id="addComment" userId='.$user_id.'>Add Comment</button>';
+  }
+
+ 
+
+?>
+
+<!-- echo '<input id="submitFaveButton" userId='.$user_id.' albumId='.$album_id.' onclick="faveFunction()" type="button" value="Unfave"/>'; -->
+
+<!-- <textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
+  <button style= "float:right" class="btn-primary btn" id="addComment">Add Comment</button> -->
 <h2><?php echo $numComments?> Comments</h2>
   <div class="userComments"> 
     <div class="comment"> 
@@ -194,9 +212,9 @@ if (!isset($_SESSION['id'])) {
             var comment = $("#mainComment").val();
 
             var addCommentButton = document.getElementById("addComment");
-            var albumIdComment = addCommentButton.getAttribute("albumId");
+            var userId2 = addCommentButton.getAttribute("userId");
 
-            var urlToRequestComment = "album.php?album_id="+albumIdComment;
+            var urlToRequestComment = "getComments.php?user_id="+userId2
 
             if (comment.length > 5) {
                 $.ajax({
@@ -207,7 +225,7 @@ if (!isset($_SESSION['id'])) {
                         addComment: 1,
                         comment: comment
                     }, success: function (response) {
-                        console.log(response);
+                        $(".userComments").prepend(response);
                         }
                     });
             } else alert('Please Check Your Inputs');
