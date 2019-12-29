@@ -170,7 +170,7 @@ if (!isset($_SESSION['id'])) {
 
 <!-- <textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
   <button style= "float:right" class="btn-primary btn" id="addComment">Add Comment</button> -->
-<h2><?php echo $numComments?> Comments</h2>
+<h2><b id="numComments"><?php echo $numComments?> Comments</b></h2>
   <div class="userComments"> 
     <div class="comment"> 
       
@@ -206,6 +206,8 @@ if (!isset($_SESSION['id'])) {
 <script type="text/javascript">
 
 //the following uses Ajax and Jquery to upload the users comments to the database
+let max = <?php echo $numComments ?>;
+
 
     $(document).ready(function () {
         $("#addComment").on('click', function () {
@@ -225,6 +227,8 @@ if (!isset($_SESSION['id'])) {
                         addComment: 1,
                         comment: comment
                     }, success: function (response) {
+                        max++;
+                        $("#numComments").text(max + " Comments");
                         $(".userComments").prepend(response);
                         }
                     });
@@ -268,7 +272,7 @@ function getAllComments(start, max,) {
     // }
 
    
-    getAllComments(0, <?php echo $numComments ?>);
+    getAllComments(0, max);
 
     
 </script>
