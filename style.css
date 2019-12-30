@@ -1922,7 +1922,7 @@ header .header-area1 {
       color: black;
     }
 
-    .time {
+    .time, .reply {
       color: gray;
     }
 
