@@ -159,7 +159,7 @@ if (!isset($_SESSION['id'])) {
   echo '<p> Sign in to comment ! </p>';
   } else  {
     echo '<textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
-    <button style= "float:right" class="btn-primary btn" id="addComment" userId='.$user_id.'>Add Comment</button>';
+    <button style= "float:right" class="btn-primary btn" onclick="isReply = false;" id="addComment" userId='.$user_id.'>Add Comment</button>';
   }
 
  
@@ -193,8 +193,8 @@ if (!isset($_SESSION['id'])) {
 
  <div class="replyRow" style="display:none">
  <textarea class="form-control" id="replyComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
-    <button style= "float:right" class="btn-default btn" id="addReply" onclick="$('.replyRow').hide();">Close</button>
-    <button style= "float:right" class="btn-primary btn" id="addReply" >Add Reply</button>
+    <button style= "float:right" class="btn-default btn"  onclick="$('.replyRow').hide();">Close</button>
+    <button style= "float:right" class="btn-primary btn" id="addReply" onclick= "isReply = true;">Add Reply</button>
  </div>
 
 
@@ -212,12 +212,17 @@ if (!isset($_SESSION['id'])) {
 <script type="text/javascript">
 
 //the following uses Ajax and Jquery to upload the users comments to the database
-let max = <?php echo $numComments ?>;
+var isReply = false, max = <?php echo $numComments ?>;
 
 
     $(document).ready(function () {
-        $("#addComment").on('click', function () {
-            var comment = $("#mainComment").val();
+        $("#addComment, #addReply").on('click', function () {
+            var comment;
+            
+            if (!isReply)
+             comment = $("#mainComment").val();
+            else
+              comment = $("#replyComment").val();
 
             var addCommentButton = document.getElementById("addComment");
             var userId2 = addCommentButton.getAttribute("userId");
