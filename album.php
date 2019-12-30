@@ -191,6 +191,12 @@ if (!isset($_SESSION['id'])) {
 
  </div>
 
+ <div class="replyRow" style="display:none">
+ <textarea class="form-control" id="replyComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
+    <button style= "float:right" class="btn-default btn" id="addReply" onclick="$('.replyRow').hide();">Close</button>
+    <button style= "float:right" class="btn-primary btn" id="addReply" >Add Reply</button>
+ </div>
+
 
 
 
@@ -239,10 +245,6 @@ let max = <?php echo $numComments ?>;
 //The following function will get the comments dynamically from the database    
 
 
-
-
-
-
 function getAllComments(start, max,) {
     if (start > max) {
         return;
@@ -265,11 +267,10 @@ function getAllComments(start, max,) {
 
       
 
-    // function reply(caller) {
-    //     commentID = $(caller).attr('data-commentID');
-    //     $(".replyRow").insertAfter($(caller));
-    //     $('.replyRow').show();
-    // }
+ function reply(caller) {
+     $(".replyRow").insertAfter($(caller));
+     $('.replyRow').show();
+ }
 
    
     getAllComments(0, max);

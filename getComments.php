@@ -30,7 +30,7 @@ if (isset($_POST['getAllComments'])) {
     <div class="comment"> 
     <div class="user">'.$data['uidUsers'].'<span class="time"> '.$data['created_on'].'</span></div> 
     <div class="userComment">'.$data['message'].'</div> 
-    <div class="reply"><a href="#" onclick="reply(this)">REPLY</a></div>
+    <div class="reply"><a href="javascript:void(0)" onclick="reply(this)">REPLY</a></div>
     <div class="replies"> 
     
  
