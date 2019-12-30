@@ -240,9 +240,17 @@ var isReply = false, max = <?php echo $numComments ?>;
                     }, success: function (response) {
                         max++;
                         $("#numComments").text(max + " Comments");
-                        $(".userComments").prepend(response);
+
+                        if (!isReply) {
+                          $(".userComments").prepend(response);
+                          $("#mainComment").val("");
+                       } else {
+                            $("#replyComment").val("");
+                            $(".replyRow").hide();
+                            $('.replyRow').parent().next().append(response);
                         }
-                    });
+                      }
+                   });
             } else alert('Please Check Your Inputs');
         });
     });
