@@ -52,7 +52,17 @@ date_default_timezone_set("Europe/London");
 
     //sql to add comments
 
+if (isset($_POST['addComment'])) {
+    $comment = $conn->real_escape_string($_POST['comment']);
 
+    $conn->query("INSERT INTO user_comment_table (user_id, message, created_on) VALUES ('$user_id', '$comment', NOW())");
+    $sqlGetComment = $conn->query("SELECT uidUsers, message, DATE_FORMAT(user_comment_table.created_on, '%Y-%m-%d') AS created_on FROM user_comment_table 
+    INNER JOIN users ON user_comment_table.user_id = users.idUsers ORDER BY user_comment_table.comment_id DESC LIMIT $start, 20
+    ");
+    $data = $sqlGetComment->fetch_assoc();
+    exit(createCommentRow($data));
+
+}
 
 
 
@@ -149,7 +159,7 @@ if (!isset($_SESSION['id'])) {
   echo '<p> Sign in to comment ! </p>';
   } else  {
     echo '<textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
-    <button style= "float:right" class="btn-primary btn" onclick= "isReply = false;" id="addComment" userId='.$user_id.'>Add Comment</button>';
+    <button style= "float:right" class="btn-primary btn" onclick="isReply = false;" id="addComment" userId='.$user_id.'>Add Comment</button>';
   }
 
  
@@ -184,7 +194,7 @@ if (!isset($_SESSION['id'])) {
  <div class="replyRow" style="display:none">
  <textarea class="form-control" id="replyComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
     <button style= "float:right" class="btn-default btn"  onclick="$('.replyRow').hide();">Close</button>
-    <button style= "float:right" class="btn-primary btn" onclick= "isReply = true;" id="addReply">Add Reply</button>
+    <button style= "float:right" class="btn-primary btn" id="addReply" onclick= "isReply = true;">Add Reply</button>
  </div>
 
 
@@ -202,7 +212,7 @@ if (!isset($_SESSION['id'])) {
 <script type="text/javascript">
 
 //the following uses Ajax and Jquery to upload the users comments to the database
-var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
+var isReply = false, max = <?php echo $numComments ?>;
 
 
     $(document).ready(function () {
@@ -226,9 +236,7 @@ var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
                     dataType: 'text',
                     data: {
                         addComment: 1,
-                        comment: comment,
-                        isReply: isReply,
-                        commentID: commentID
+                        comment: comment
                     }, success: function (response) {
                         max++;
                         $("#numComments").text(max + " Comments");
@@ -237,10 +245,9 @@ var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
                           $(".userComments").prepend(response);
                           $("#mainComment").val("");
                        } else {
-                            commentID = 0;
                             $("#replyComment").val("");
                             $(".replyRow").hide();
-                            $('.replyRow').parent().next().append(response); //this is the location we want to add the comment, parent element.
+                            $('.replyRow').parent().next().append(response);
                         }
                       }
                    });
@@ -274,7 +281,6 @@ function getAllComments(start, max,) {
       
 
  function reply(caller) {
-    commentID = $(caller).attr('data-commentID'); 
      $(".replyRow").insertAfter($(caller));
      $('.replyRow').show();
  }
