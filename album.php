@@ -159,7 +159,7 @@ if (!isset($_SESSION['id'])) {
   echo '<p> Sign in to comment ! </p>';
   } else  {
     echo '<textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
-    <button style= "float:right" class="btn-primary btn" onclick="isReply = false;" id="addComment" userId='.$user_id.'>Add Comment</button>';
+    <button style= "float:right" class="btn-primary btn" onclick= "isReply = false;" id="addComment" userId='.$user_id.'>Add Comment</button>';
   }
 
  
@@ -194,7 +194,7 @@ if (!isset($_SESSION['id'])) {
  <div class="replyRow" style="display:none">
  <textarea class="form-control" id="replyComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
     <button style= "float:right" class="btn-default btn"  onclick="$('.replyRow').hide();">Close</button>
-    <button style= "float:right" class="btn-primary btn" id="addReply" onclick= "isReply = true;">Add Reply</button>
+    <button style= "float:right" class="btn-primary btn" onclick= "isReply = true;" id="addReply">Add Reply</button>
  </div>
 
 
@@ -236,7 +236,8 @@ var isReply = false, max = <?php echo $numComments ?>;
                     dataType: 'text',
                     data: {
                         addComment: 1,
-                        comment: comment
+                        comment: comment,
+                        isReply: isReply
                     }, success: function (response) {
                         max++;
                         $("#numComments").text(max + " Comments");
@@ -247,7 +248,7 @@ var isReply = false, max = <?php echo $numComments ?>;
                        } else {
                             $("#replyComment").val("");
                             $(".replyRow").hide();
-                            $('.replyRow').parent().next().append(response);
+                            $('.replyRow').parent().next().append(response); //this is the location we want to add the comment, parent element.
                         }
                       }
                    });
