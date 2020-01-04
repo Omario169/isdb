@@ -236,7 +236,8 @@ var isReply = false, max = <?php echo $numComments ?>;
                     dataType: 'text',
                     data: {
                         addComment: 1,
-                        comment: comment
+                        comment: comment,
+                        isReply: isReply
                     }, success: function (response) {
                         max++;
                         $("#numComments").text(max + " Comments");
@@ -294,6 +295,6 @@ function getAllComments(start, max,) {
 </body>
 
 </html>
-fullstip
+
 
 

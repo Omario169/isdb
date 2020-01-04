@@ -43,6 +43,7 @@ if (isset($_POST['getAllComments'])) {
 
 if (isset($_POST['addComment'])) {
   $comment = $conn->real_escape_string($_POST['comment']);
+  $isReply = $conn->real_escape_string($_POST['isReply']);
 
   $conn->query("INSERT INTO user_comment_table (user_id, message, created_on) VALUES ('$user_id', '$comment', NOW())");
   $sqlGetComment = $conn->query("SELECT uidUsers, message, DATE_FORMAT(user_comment_table.created_on, '%Y-%m-%d') AS created_on FROM user_comment_table 
