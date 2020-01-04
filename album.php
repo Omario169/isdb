@@ -212,7 +212,7 @@ if (!isset($_SESSION['id'])) {
 <script type="text/javascript">
 
 //the following uses Ajax and Jquery to upload the users comments to the database
-var isReply = false, max = <?php echo $numComments ?>;
+var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
 
 
     $(document).ready(function () {
@@ -282,6 +282,7 @@ function getAllComments(start, max,) {
       
 
  function reply(caller) {
+   commentID = $(caller).attr('data-commentID');
      $(".replyRow").insertAfter($(caller));
      $('.replyRow').show();
  }
