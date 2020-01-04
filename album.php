@@ -237,7 +237,8 @@ var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
                     data: {
                         addComment: 1,
                         comment: comment,
-                        isReply: isReply
+                        isReply: isReply,
+                        commentID: commentID
                     }, success: function (response) {
                         max++;
                         $("#numComments").text(max + " Comments");
@@ -246,6 +247,7 @@ var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
                           $(".userComments").prepend(response);
                           $("#mainComment").val("");
                        } else {
+                            commentID = 0;
                             $("#replyComment").val("");
                             $(".replyRow").hide();
                             $('.replyRow').parent().next().append(response);

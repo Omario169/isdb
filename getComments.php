@@ -44,9 +44,10 @@ if (isset($_POST['getAllComments'])) {
 if (isset($_POST['addComment'])) {
   $comment = $conn->real_escape_string($_POST['comment']);
   $isReply = $conn->real_escape_string($_POST['isReply']);
+  $commentID  = $conn->real_escape_string($_POST['commentID']);
 
   if ($isReply) {
-    $conn->query("INSERT INTO replies (replyMessage, commentID, userID, createdOn) VALUES ('$comment', '', '$user_id', NOW())");
+    $conn->query("INSERT INTO replies (replyMessage, commentID, userID, createdOn) VALUES ('$comment', '$commentID', '$user_id', NOW())");
     $sqlGetComment = $conn->query("SELECT replies.repliesID, uidUsers, message, DATE_FORMAT(replies.createdOn, '%Y-%m-%d') AS createdOn FROM replies 
     INNER JOIN users ON replies.userID = users.idUsers ORDER BY replies.repliesID DESC LIMIT 1");
 } else {
