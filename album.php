@@ -52,20 +52,9 @@ date_default_timezone_set("Europe/London");
 
     //sql to add comments
 
-if (isset($_POST['addComment'])) {
-    $comment = $conn->real_escape_string($_POST['comment']);
-
-    $conn->query("INSERT INTO user_comment_table (user_id, message, created_on) VALUES ('$user_id', '$comment', NOW())");
-    $sqlGetComment = $conn->query("SELECT uidUsers, message, DATE_FORMAT(user_comment_table.created_on, '%Y-%m-%d') AS created_on FROM user_comment_table 
-    INNER JOIN users ON user_comment_table.user_id = users.idUsers ORDER BY user_comment_table.comment_id DESC LIMIT $start, 20
-    ");
-    $data = $sqlGetComment->fetch_assoc();
-    exit(createCommentRow($data));
-
-}
 
 
-
+//getting the number of comments from the database. 
 
 $sqlNumComments = $conn->query("SELECT comment_id FROM user_comment_table");
 $numComments = $sqlNumComments->num_rows;
@@ -211,7 +200,10 @@ if (!isset($_SESSION['id'])) {
   
 <script type="text/javascript">
 
-//the following uses Ajax and Jquery to upload the users comments to the database
+//the following uses Ajax and Jquery to upload the users comments to the database. A flag is given weather or not the comment is a reply or not. 
+
+
+
 var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
 
 
@@ -229,6 +221,7 @@ var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
 
             var urlToRequestComment = "getComments.php?user_id="+userId2
 
+//comment length must be more than 5 characters. 
             if (comment.length > 5) {
                 $.ajax({
                     url: urlToRequestComment,
@@ -247,6 +240,7 @@ var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
                           $(".userComments").prepend(response);
                           $("#mainComment").val("");
                        } else {
+                         //this resets comment ID back to 0
                             commentID = 0;
                             $("#replyComment").val("");
                             $(".replyRow").hide();
@@ -258,7 +252,9 @@ var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
         });
     });
 
-//The following function will get the comments dynamically from the database    
+
+//The following function will get the comments dynamically from the database. If start is bigger than maximum we will exit and stop getting the comments.    
+//ajax request made. Starting point is 20 which is the number of comments we get in each iteration. 
 
 
 function getAllComments(start, max,) {
@@ -281,7 +277,7 @@ function getAllComments(start, max,) {
 }
 
 
-      
+//Need to know who is the caller. Original comment. Comment ID is changed from caller.    
 
  function reply(caller) {
    commentID = $(caller).attr('data-commentID');
@@ -289,8 +285,8 @@ function getAllComments(start, max,) {
      $('.replyRow').show();
  }
 
-   
-    getAllComments(0, max);
+//This is the call to the function "getAllComments"    
+getAllComments(0, max);
 
     
 </script>
