@@ -66,7 +66,19 @@ $numComments = $sqlNumComments->num_rows;
  <div id="albumcontent"> 
 
 
-<div class=albumtitle> <?php echo "<h1> $albumname  </h1>" ?> and Review</div>
+<div class=albumtitle> <?php echo "<h1> $albumname  </h1>" ?> 
+
+<div style="padding: 10px;color:white;">
+        <i class="fa fa-star fa-2x" data-index="0"></i>
+        <i class="fa fa-star fa-2x" data-index="1"></i>
+        <i class="fa fa-star fa-2x" data-index="2"></i>
+        <i class="fa fa-star fa-2x" data-index="3"></i>
+        <i class="fa fa-star fa-2x" data-index="4"></i>
+        
+    </div>
+
+
+</div>
 <main><h2>Description</h2> <?php echo "<p> $albumdesc  </p>" ?></main>
 
 
