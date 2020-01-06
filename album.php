@@ -83,7 +83,7 @@ $numComments = $sqlNumComments->num_rows;
 <main><h2>Description</h2> <?php echo "<p> $albumdesc  </p>" ?></main>
 
 
-<section>Comment Section 
+<section><h2> Track listing </h2> 
 
 
 
@@ -155,7 +155,7 @@ if (!isset($_SESSION['id'])) {
 </aside>
 
 
-<div class=albumComments> Comment section
+<div class=albumComments> <h2>Comment section</h2>
 
 <?php if (!isset($_SESSION['id'])) {
   echo '<p> Sign in to comment ! </p>';
