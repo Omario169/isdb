@@ -2,6 +2,7 @@
 include 'preloads/header.php';
 include_once 'includes/dbh.inc.php';
 include 'getComments.php';
+include 'starRating.php';
 include 'preloads/javascript.php';
 date_default_timezone_set("Europe/London");
    
@@ -66,15 +67,15 @@ $numComments = $sqlNumComments->num_rows;
  <div id="albumcontent"> 
 
 
-<div class=albumtitle> <?php echo "<h1> $albumname  </h1>" ?> 
+<div class=albumtitle> <?php echo "<h1> $albumname  </h1>" ?> <h2>Average ISDB user score: <?php echo round($avg,2) ?></h2> 
 
-<div style="padding: 10px;color:white;">
+<div style="padding: 0px;color:white;">
+        <h2> Your Rating</h2>
         <i class="fa fa-star fa-2x" data-index="0"></i>
         <i class="fa fa-star fa-2x" data-index="1"></i>
         <i class="fa fa-star fa-2x" data-index="2"></i>
         <i class="fa fa-star fa-2x" data-index="3"></i>
         <i class="fa fa-star fa-2x" data-index="4"></i>
-        
     </div>
 
 

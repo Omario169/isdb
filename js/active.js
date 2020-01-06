@@ -250,25 +250,33 @@ function faveFunction() {
 
 
 //star rating system
-
+// -1 = not voted. 
 var ratedIndex = -1, uID = 0;
 
         $(document).ready(function () {
             resetStarColors();
 
+            
+
             if (localStorage.getItem('ratedIndex') != null) {
                 setStars(parseInt(localStorage.getItem('ratedIndex')));
+                //when someone loads for the first time
                 uID = localStorage.getItem('uID');
             }
 
+
+            //when someone click we remember the index on the local storage
             $('.fa-star').on('click', function () {
                ratedIndex = parseInt($(this).data('index'));
                localStorage.setItem('ratedIndex', ratedIndex);
                saveToTheDB();
             });
 
+            //this is the hover effect
             $('.fa-star').mouseover(function () {
                 resetStarColors();
+
+                //the star currently hovering above
                 var currentIndex = parseInt($(this).data('index'));
                 setStars(currentIndex);
             });
@@ -276,14 +284,16 @@ var ratedIndex = -1, uID = 0;
             $('.fa-star').mouseleave(function () {
                 resetStarColors();
 
+                //if rated index different than -1, set to the ratedIndex
                 if (ratedIndex != -1)
                     setStars(ratedIndex);
             });
         });
 
+        //saves to the database
         function saveToTheDB() {
             $.ajax({
-               url: "index.php",
+               url: "starRating.php",
                method: "POST",
                dataType: 'json',
                data: {
@@ -292,16 +302,20 @@ var ratedIndex = -1, uID = 0;
                    ratedIndex: ratedIndex
                }, success: function (r) {
                     uID = r.id;
+                    //To remember above user id
                     localStorage.setItem('uID', uID);
                }
             });
         }
 
+            //This allows us to select the stars for hover
         function setStars(max) {
             for (var i=0; i <= max; i++)
                 $('.fa-star:eq('+i+')').css('color', 'green');
         }
 
+
+    //This function will quickly change the colors.
         function resetStarColors() {
             $('.fa-star').css('color', 'white');
         }
@@ -321,36 +335,3 @@ var ratedIndex = -1, uID = 0;
 
 
 
-// $('#faveButton').on('submit', function() {
-    
-
-//     var that = $(this),
-//         url = that.attr('action'),
-//         type = that.attr('method'),
-//         data = {};
-
-//     that.find('[name]').each(function() {
-//         var that = $(this),
-//             name = that.attr('name'),
-//             value = that.val();
-
-//         data[name] = value;
-//     });
-
-//     $.ajax({
-//         url: url,
-//         type: 'POST', 
-//         data: data,
-//         success: function(response) {
-//             console.log(response);
-//         }
-
-
-
-//     });
-
-    
-
-// });
-
-// return false;
