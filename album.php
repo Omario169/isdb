@@ -161,7 +161,7 @@ if (!isset($_SESSION['id'])) {
   echo '<p> Sign in to comment ! </p>';
   } else  {
     echo '<textarea class="form-control" id="mainComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
-    <button style= "float:right" class="btn-primary btn" onclick="isReply = false;" id="addComment" userId='.$user_id.'>Add Comment</button>';
+    <button style= "float:right" class="btn-primary btn" value="false" id="addComment" userId='.$user_id.'>Add Comment</button>';
   }
 
  
@@ -196,7 +196,7 @@ if (!isset($_SESSION['id'])) {
  <div class="replyRow" style="display:none">
  <textarea class="form-control" id="replyComment" placeholder= "add public comment" id="" cols="30" rows="2"></textarea><br>
     <button style= "float:right" class="btn-default btn"  onclick="$('.replyRow').hide();">Close</button>
-    <button style= "float:right" class="btn-primary btn" id="addReply" onclick= "isReply = true;">Add Reply</button>
+    <button style= "float:right" class="btn-primary btn" id="addReply" value="true">Add Reply</button>
  </div>
 
 
@@ -222,12 +222,20 @@ var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
 
     $(document).ready(function () {
         $("#addComment, #addReply").on('click', function () {
-            var comment;
+          var comment;
+          
+          var isReplyAsAString = this.value;
+          alert(isReplyAsAString);
+
+          var isReply = (isReplyAsAString == 'true');
             
-            if (!isReply)
-             comment = $("#mainComment").val();
-            else
+            if (!isReply){
+              comment = $("#mainComment").val();
+            }
+             
+            else{
               comment = $("#replyComment").val();
+            }
 
             var addCommentButton = document.getElementById("addComment");
             var userId2 = addCommentButton.getAttribute("userId");
@@ -243,7 +251,7 @@ var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
                     data: {
                         addComment: 1,
                         comment: comment,
-                        isReply: isReply,
+                        isReply: isReplyAsAString,
                         commentID: commentID
                     }, success: function (response) {
                         max++;
