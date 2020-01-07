@@ -225,7 +225,7 @@ var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
           var comment;
           
           var isReplyAsAString = this.value;
-          alert(isReplyAsAString);
+          
 
           var isReply = (isReplyAsAString == 'true');
             

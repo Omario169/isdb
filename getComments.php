@@ -3,6 +3,7 @@ include_once 'includes/dbh.inc.php';
 
 
 
+
 if (!isset($_GET['user_id'])) {
       
 }
@@ -50,6 +51,7 @@ if (isset($_POST['getAllComments'])) {
 
 //  function createCommentRow($data){
 
+//   //data is for the main comment, the global $conn added for the replies connection.
 //    global $conn;
 
 //    $response = '
@@ -59,8 +61,8 @@ if (isset($_POST['getAllComments'])) {
 //    <div class="reply"><a href="javascript:void(0)" data-commentID="'.$data['comment_id'].'" onclick="reply(this)">REPLY</a></div>
 //    <div class="replies">'; 
   
-//    $sqlGetCommentR = $conn->query("SELECT replies.repliesID, uidUsers, message, DATE_FORMAT(replies.createdOn, '%Y-%m-%d') AS createdOn FROM replies 
-//    INNER JOIN users ON replies.userID = users.idUsers WHERE replies.commentID = '".$data['comment_id']."' ORDER BY replies.repliesID DESC LIMIT 1");
+//    $sqlGetCommentR = $conn->query("SELECT user_comment_table.comment_id, uidUsers, user_comment_table.message, DATE_FORMAT(user_comment_table.created_on, '%Y-%m-%d') 
+//     AS created_on FROM user_comment_table INNER JOIN users ON user_comment_table.user_id = users.idUsers ORDER BY user_comment_table.comment_id DESC LIMIT 1");
 //    while($dataR= $sqlGetCommentR->fetch_assoc())
 //    $response .= createCommentRow($dataR);
 
